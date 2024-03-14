@@ -7,6 +7,7 @@
 #include "Student.h"
 #include "Teacher.h"
 #include "Employee.h"
+#include "Pet.h"
 
 int readFile(vector<Person>& people, vector<Student>& students, vector<Teacher>& teachers, vector<Employee>& employees, vector<Person*> &allPeople) {
 
@@ -39,9 +40,18 @@ int readFile(vector<Person>& people, vector<Student>& students, vector<Teacher>&
     // try to create a person object 
     // calling constructor with lastname row[1], firstname row[2] and age
     // convert the string 'age' to an integer
+    vector<Pet*> pets;
+        pets.clear();
     try{
         if (row[0][0] == 'S') {
             Student tempS(row[1], row[2], stoi(row[3]), stof(row[4]));
+            for (size_t i = 4; i < row.size(); i += 2) {
+                if (row[i] != "none") {
+                    string petName = row[i];
+                    string petType = row[i + 1];
+                    pets.push_back(new Pet(petName, petType));
+                }
+            }
             students.push_back(tempS);
             Student* tempSP = new Student(row[1], row[2], stoi(row[3]), stof(row[4]));
             allPeople.push_back(tempSP);
