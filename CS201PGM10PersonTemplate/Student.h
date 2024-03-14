@@ -8,12 +8,13 @@
 
 class Student : public Person {
 private:
+
     float gpa;
 
 public:
     Student();
     Student(string l, string f, int a, float g);
-
+    Student(string l, string f, int a, float g, vector<Pet *> pets);
     float getGPA() { return gpa; }
     void setGPA(float g) { gpa = g; }
 

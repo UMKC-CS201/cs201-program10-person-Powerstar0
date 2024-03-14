@@ -18,8 +18,8 @@ public:
         totalTeacher++;
     }
 
-    Teacher(char t, string l, string f, int a, int h, float hr, string sub)
-    : Staff(t,l,f,a,h,hr){
+    Teacher(char t, string l, string f, int a, int h, float hr, string sub, vector<Pet*> p)
+    : Staff(t,l,f,a,h,hr,p){
         type = 'T';
         subject = sub;
         totalTeacher++;
@@ -31,7 +31,11 @@ public:
          << setw(16) << lname
          << setw(15) << fname
          << setw(10)  << age
-         << setw(5) << hours << ", " << hrlyRate << ", " << subject << endl;
+         << setw(5) << "HRLY:" << setw(5) << hrlyRate << "  SUBJECT:" << setw(26) << subject;
+        for (const auto& pet : pets) {
+            cout << pet->getName() << " (" << pet->getType() << ") ";
+        }
+        cout << endl;
 }
 static int totalTeacher;
 };

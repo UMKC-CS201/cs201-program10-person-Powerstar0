@@ -1,11 +1,12 @@
 #pragma once
 #include <string>
-#include <Pet.h>
+#include "Pet.h"
 using namespace std;
 //Used CHATGPT to aid in creating PET class
 
 class Person {
 protected:
+
     char type;
 	string lname;
 	string fname;
@@ -14,6 +15,7 @@ protected:
 
 public:
 	Person();                            //constructor: default
+    Person(string l, string f, int a);
 	Person(string l, string f, int a, vector<Pet*>& pet);   //constructor: overloaded (needs correction)
 
   //add other accessors & mutators

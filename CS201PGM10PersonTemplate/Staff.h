@@ -18,11 +18,12 @@ public:
         hours = 0;
         hrlyRate = 0.0;
     }
-    Staff(char t, string l, string f, int a, int h, float hr)
-        : Person(l,f,a){
+    Staff(char t, string l, string f, int a, int h, float hr, vector<Pet*> &P)
+        : Person(l,f,a,P){
         type = ' ';
         hours = h;
         hrlyRate = hr;
+        pets = P;
     }
     int getHours(){return hours;}
     float getHrlyRate(){return hrlyRate;}

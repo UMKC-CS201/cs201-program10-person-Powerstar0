@@ -12,11 +12,12 @@ Student::Student() : Person() {
     totalStudents++;
 }
 
-Student::Student(string l, string f, int a, float g)
-: Person(l, f, a) {
+Student::Student(string l, string f, int a, float g, vector<Pet*> v)
+: Person(l, f, a, v) {
     type = 'S';
     gpa = g;
     totalStudents++;
+    pets = v;
 }
 
 void Student::print() {
@@ -24,5 +25,9 @@ void Student::print() {
          << setw(16) << lname
          << setw(15) << fname
          << setw(10) << age
-         << setw(5) << gpa << endl;
+         << setw(4) << "GPA:" << setw(42) << gpa;
+    for (const auto& pet : pets) {
+        cout << setw(11) << pet->getName() <<" (" << pet->getType() << ") ";
+    }
+    cout << endl;
 }

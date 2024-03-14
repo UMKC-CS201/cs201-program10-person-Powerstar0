@@ -1,5 +1,11 @@
 // CS201Wk8PersonClass.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
+//Name: Johnny Diep
+//Date: 03/14/2024
+//Purpose: List types of people, their names, age, other info, and pets
+//Note: Used CHATGPT to help make the Pet Class
+
+
 
 #include "Person.h"
 #include "Function.h"
@@ -26,6 +32,7 @@ int main()
     // read the file & load into vector of Personal type
     readFile(myPeeps, myStudents, myTeachers, myEmployees, allPeople);
 
+    /*
     Person newP;
     newP.setLName("Wonka");
     newP.setFName("Willy");
@@ -33,6 +40,7 @@ int main()
     myPeeps.push_back(newP);
     Person newP2("Mahomes", "Patrick", 25);
     myPeeps.push_back(newP2);
+     */
 
     // print the vector
     printVector(myPeeps);

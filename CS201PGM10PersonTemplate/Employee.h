@@ -19,8 +19,8 @@ public:
         totalEmployees++;
     }
 
-    Employee(char t, string l, string f, int a, int h, float hr, float v)
-            : Staff(t,l,f,a,h,hr){
+    Employee(char t, string l, string f, int a, int h, float hr, float v, vector<Pet*> p)
+            : Staff(t,l,f,a,h,hr,p){
         type = 'E';
         vacHours = v;
         totalEmployees++;
@@ -31,8 +31,12 @@ public:
         cout << type << left << setw(5) << " "
              << setw(16) << lname
              << setw(15) << fname
-             << setw(10)  << age
-             << setw(5) << hours << ", " << hrlyRate << ", " << vacHours << endl;
+             << setw(9)  << age
+             << setw(5)  << " HRLY:" << setw(5) <<hrlyRate << " VAC DAYS:" << setw(26) << vacHours;
+        for (const auto& pet : pets) {
+            cout << setw(11) << pet->getName() << " (" << pet->getType() << ") ";
+        }
+        cout << endl;
     }
     static int totalEmployees;
 };

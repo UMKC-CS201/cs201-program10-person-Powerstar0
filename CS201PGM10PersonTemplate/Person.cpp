@@ -16,10 +16,19 @@ Person::Person() {      //scope identifier Person::
 
 //correct the overloaded constructor
 Person::Person(string l, string f, int a) {
+    type  = 'P';
+    lname = l;
+    fname = f;
+    age = a;;
+    totalPeople++;
+}
+
+Person::Person(string l, string f, int a, vector<Pet*> &p) {
   type  = 'P';
   lname = l;
   fname = f;
   age = a;
+  pets = p;
   totalPeople++;
 }
 
@@ -30,5 +39,9 @@ void Person::print () {
     cout << type << left << setw(5) << " "
     << setw(16) << lname
     << setw(15) << fname
-    << setw(10) << age << endl;
+    << setw(49) << age;
+    for (const auto& pet : pets) {
+        cout << pet->getName() << " (" << pet->getType() << "), ";
+    }
+    cout << endl;
 }

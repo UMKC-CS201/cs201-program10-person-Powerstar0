@@ -13,7 +13,7 @@ int readFile(vector<Person>& people, vector<Student>& students, vector<Teacher>&
 
   //OPEN THE INPUT FILE
 	ifstream inFile;
-	inFile.open("/Users/johnnydiep/CLionProjects/cs201-program10-person-Powerstar0/CS201PGM10PersonTemplate/people.txt");
+	inFile.open("people.txt");
 	if (!inFile.is_open()) {
 		cout << "File is not open" << endl;
 		return 1;
@@ -41,38 +41,82 @@ int readFile(vector<Person>& people, vector<Student>& students, vector<Teacher>&
     // calling constructor with lastname row[1], firstname row[2] and age
     // convert the string 'age' to an integer
     vector<Pet*> pets;
-        pets.clear();
     try{
         if (row[0][0] == 'S') {
-            Student tempS(row[1], row[2], stoi(row[3]), stof(row[4]));
+            for (size_t i = 5; i < row.size(); i += 2) {
+                if (row[i] != "none") {
+                    string petName = row[i];
+                    string petType = row[i + 1];
+                    pets.push_back(new Pet(petName, petType));
+                }
+                else {
+                    string petName = "none";
+                    string petType;
+                    pets.push_back(new Pet(petName, petType));
+                }
+            }
+            Student tempS(row[1], row[2], stoi(row[3]), stof(row[4]), pets);
+            students.push_back(tempS);
+            Student* tempSP = new Student(row[1], row[2], stoi(row[3]), stof(row[4]), pets);
+            allPeople.push_back(tempSP);
+        }
+        else if (row[0][0] == 'T') {
+            //
+            for (size_t i = 7; i < row.size(); i += 2) {
+                if (row[i] != "none") {
+                    string petName = row[i];
+                    string petType = row[i + 1];
+                    pets.push_back(new Pet(petName, petType));
+                }
+                else {
+                    string petName = "none";
+                    string petType;
+                    pets.push_back(new Pet(petName, petType));
+                }
+            }
+            //
+            Teacher tempT('T', row[1], row[2], stoi(row[3]), stoi(row[4]), stof(row[5]), row[6], pets);
+            teachers.push_back(tempT);
+            Teacher* tempTP = new Teacher('T', row[1], row[2], stoi(row[3]), stoi(row[4]), stof(row[5]), row[6], pets);
+            allPeople.push_back(tempTP);
+        }
+        else if (row[0][0] == 'E') {
+            //
+            for (size_t i = 7; i < row.size(); i += 2) {
+                if (row[i] != "none") {
+                    string petName = row[i];
+                    string petType = row[i + 1];
+                    pets.push_back(new Pet(petName, petType));
+                }
+                else {
+                    string petName = "none";
+                    string petType;
+                    pets.push_back(new Pet(petName, petType));
+                }
+            }
+            //
+            Employee tempE('E', row[1], row[2], stoi(row[3]), stoi(row[4]), stof(row[5]), stoi(row[6]), pets);
+            employees.push_back(tempE);
+            Employee* tempEP = new Employee('E', row[1], row[2], stoi(row[3]), stoi(row[4]), stof(row[5]), stoi(row[6]), pets);
+            allPeople.push_back(tempEP);
+        }
+        else {
             for (size_t i = 4; i < row.size(); i += 2) {
                 if (row[i] != "none") {
                     string petName = row[i];
                     string petType = row[i + 1];
                     pets.push_back(new Pet(petName, petType));
                 }
-            }
-            students.push_back(tempS);
-            Student* tempSP = new Student(row[1], row[2], stoi(row[3]), stof(row[4]));
-            allPeople.push_back(tempSP);
+                else {
+                    string petName = "none";
+                    string petType;
+                    pets.push_back(new Pet(petName, petType));
+                }
         }
-        else if (row[0][0] == 'T') {
-            Teacher tempT('T', row[1], row[2], stoi(row[3]), stoi(row[4]), stof(row[5]), row[6]);
-            teachers.push_back(tempT);
-            Teacher* tempTP = new Teacher('T', row[1], row[2], stoi(row[3]), stoi(row[4]), stof(row[5]), row[6]);
-            allPeople.push_back(tempTP);
-        }
-        else if (row[0][0] == 'E') {
-            Employee tempE('E', row[1], row[2], stoi(row[3]), stoi(row[4]), stof(row[5]), stoi(row[6]));
-            employees.push_back(tempE);
-            Employee* tempEP = new Employee('E', row[1], row[2], stoi(row[3]), stoi(row[4]), stof(row[5]), stoi(row[6]));
-            allPeople.push_back(tempEP);
-        }
-        else {
-            Person tempP(row[1],row[2],stoi(row[3]));
+            Person tempP(row[1],row[2],stoi(row[3]), pets);
             // if valid, push the object onto the vector
             people.push_back(tempP);
-            Person* tempPP = new Person(row[1],row[2],stoi(row[3]));
+            Person* tempPP = new Person(row[1],row[2],stoi(row[3]), pets);
             allPeople.push_back(tempPP);
         }
     }
@@ -99,20 +143,19 @@ void printVector(vector<Person> people) {
 // write the code to print the vector
 void printVector(vector<Student> student) {
 
-    cout << "TYPE " << setw(11) << "LAST NAME"
-         << setw(17) << "FIRST NAME" << setw(8) << "AGE"
-         << setw(18) << "OTHER INFO" << setw(38) << "PETS" << endl;
+    cout << "TYPE  " << setw(15) << "LAST NAME"
+         << setw(16) << "FIRST NAME" << setw(8) << "AGE"
+         << setw(48) << "OTHER INFO" << setw(60) << "PETS" << endl;
     for (int i = 0; i < student.size(); i++)
         student.at(i).print();
-
-    cout << "\nTOTAL PEOPLE: " << Student::totalStudents << endl;
+    cout << "\nTOTAL PEOPLE: " << Student::totalStudents/2 << endl;
 }
 
 void printVector(vector<Teacher> teacher) {
 
-    cout << "TYPE " << setw(11) << "LAST NAME"
-         << setw(17) << "FIRST NAME" << setw(8) << "AGE"
-         << setw(18) << "OTHER INFO" << setw(38) << "PETS" << endl;
+    cout << "TYPE  " << setw(15) << "LAST NAME"
+         << setw(16) << "FIRST NAME" << setw(8) << "AGE"
+         << setw(48) << "OTHER INFO" << setw(60) << "PETS" << endl;
     for (int i = 0; i < teacher.size(); i++)
         teacher.at(i).print();
 
@@ -121,9 +164,9 @@ void printVector(vector<Teacher> teacher) {
 
 void printVector(vector<Employee> employee) {
 
-    cout << "TYPE " << setw(11) << "LAST NAME"
-         << setw(17) << "FIRST NAME" << setw(8) << "AGE"
-         << setw(18) << "OTHER INFO" << setw(38) << "PETS" << endl;
+    cout << "TYPE  " << setw(15) << "LAST NAME"
+         << setw(16) << "FIRST NAME" << setw(8) << "AGE"
+         << setw(48) << "OTHER INFO" << setw(60) << "PETS" << endl;
     for (int i = 0; i < employee.size(); i++)
         employee.at(i).print();
 
@@ -132,11 +175,11 @@ void printVector(vector<Employee> employee) {
 
 void printVector(vector<Person*> all) {
 
-    cout << "TYPE " << setw(11) << "LAST NAME"
-         << setw(17) << "FIRST NAME" << setw(8) << "AGE"
-         << setw(18) << "OTHER INFO" << setw(38) << "PETS" << endl;
+    cout << "TYPE  " << setw(15) << "LAST NAME"
+         << setw(16) << "FIRST NAME" << setw(8) << "AGE"
+         << setw(48) << "OTHER INFO" << setw(60) << "PETS" << endl;
     for (int i = 0; i < all.size(); i++)
         all.at(i)->print();
 
-    cout << "\nTOTAL: " << Person::totalPeople << endl;
+    cout << "\nTOTAL: " << Person::totalPeople/2 << endl;
 }
