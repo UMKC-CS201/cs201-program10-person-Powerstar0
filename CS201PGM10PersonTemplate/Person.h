@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "Pet.h"
+#include <fstream>
 using namespace std;
 //Used CHATGPT to aid in creating PET class
 
@@ -30,6 +31,7 @@ public:
     void SetPets(vector<Pet*>& pet) {pets = pet;}
 
 	virtual void print();
+    virtual void print(ofstream& outfile);
 
   // add static member to count Persons created
   // where would this be updated?

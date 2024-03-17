@@ -19,6 +19,7 @@ public:
     void setGPA(float g) { gpa = g; }
 
     void print();
+    void print(ofstream& outfile);
     static int totalStudents;
 };
 

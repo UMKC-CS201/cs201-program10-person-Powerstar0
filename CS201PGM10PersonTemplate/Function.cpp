@@ -9,7 +9,7 @@
 #include "Employee.h"
 #include "Pet.h"
 
-int readFile(vector<Person>& people, vector<Student>& students, vector<Teacher>& teachers, vector<Employee>& employees, vector<Person*> &allPeople) {
+int readFile(vector<Person>& people, vector<Student>& students, vector<Teacher>& teachers, vector<Employee>& employees, vector<Person*> &allPeople, ofstream& outfile) {
 
   //OPEN THE INPUT FILE
 	ifstream inFile;
@@ -37,7 +37,7 @@ int readFile(vector<Person>& people, vector<Student>& students, vector<Teacher>&
 		while (getline(inSS, tempStr, ',')) {
 			row.push_back(tempStr);
 		}
-    // try to create a person object 
+    // try to create a person object
     // calling constructor with lastname row[1], firstname row[2] and age
     // convert the string 'age' to an integer
     vector<Pet*> pets;
@@ -121,26 +121,26 @@ int readFile(vector<Person>& people, vector<Student>& students, vector<Teacher>&
         }
     }
     catch(...){
-      cout << "RECORD: " << inRec << " IS IN ERROR\n";
+      outfile << "RECORD: " << inRec << " IS IN ERROR\n";
     }
   }
 	inFile.close();
 	return 0;
 }
 
-// write the code to print the vector
-void printVector(vector<Person> people) {
+// write the code to print the vector (Changed instead to write to output file)
+// Corrections made to math becuase of total persons becuase it double counted.
+void printVector(vector<Person> people, ofstream& outfile) {
 
-  cout << "TYPE " << setw(11) << "LAST NAME"
+  outfile << "TYPE " << setw(11) << "LAST NAME"
   << setw(17) << "FIRST NAME" << setw(8) << "AGE"
   << setw(18) << "OTHER INFO" << setw(38) << "PETS" << endl;
   for (int i = 0; i < people.size(); i++)
-      people.at(i).print();
+      people.at(i).print(outfile);
 
-  cout << "\nTOTAL PEOPLE: " << Person::totalPeople << endl;
+  outfile << "\nTOTAL PEOPLE: " << (Person::totalPeople - Student::totalStudents - Teacher::totalTeacher - Employee::totalEmployees) / 2 << endl;
 }
 
-// write the code to print the vector
 void printVector(vector<Student> student) {
 
     cout << "TYPE  " << setw(15) << "LAST NAME"
@@ -148,38 +148,48 @@ void printVector(vector<Student> student) {
          << setw(48) << "OTHER INFO" << setw(60) << "PETS" << endl;
     for (int i = 0; i < student.size(); i++)
         student.at(i).print();
-    cout << "\nTOTAL PEOPLE: " << Student::totalStudents/2 << endl;
+    cout << "\nTOTAL PEOPLE: " << Student::totalStudents / 2 << endl;
 }
 
-void printVector(vector<Teacher> teacher) {
+void printVector(vector<Student> student, ofstream& outfile) {
 
-    cout << "TYPE  " << setw(15) << "LAST NAME"
+    outfile << "TYPE  " << setw(15) << "LAST NAME"
+         << setw(16) << "FIRST NAME" << setw(8) << "AGE"
+         << setw(48) << "OTHER INFO" << setw(60) << "PETS" << endl;
+    for (int i = 0; i < student.size(); i++)
+        student.at(i).print(outfile);
+    outfile << "\nTOTAL STUDENTS: " << Student::totalStudents / 2 << endl;
+}
+
+void printVector(vector<Teacher> teacher, ofstream& outfile) {
+
+    outfile << "TYPE  " << setw(15) << "LAST NAME"
          << setw(16) << "FIRST NAME" << setw(8) << "AGE"
          << setw(48) << "OTHER INFO" << setw(60) << "PETS" << endl;
     for (int i = 0; i < teacher.size(); i++)
-        teacher.at(i).print();
+        teacher.at(i).print(outfile);
 
-    cout << "\nTOTAL TEACHERS: " << Teacher::totalTeacher << endl;
+    outfile << "\nTOTAL TEACHERS: " << Teacher::totalTeacher / 2 << endl;
 }
 
-void printVector(vector<Employee> employee) {
+void printVector(vector<Employee> employee, ofstream& outfile) {
 
-    cout << "TYPE  " << setw(15) << "LAST NAME"
+    outfile << "TYPE  " << setw(15) << "LAST NAME"
          << setw(16) << "FIRST NAME" << setw(8) << "AGE"
          << setw(48) << "OTHER INFO" << setw(60) << "PETS" << endl;
     for (int i = 0; i < employee.size(); i++)
-        employee.at(i).print();
+        employee.at(i).print(outfile);
 
-    cout << "\nTOTAL EMPLOYEES: " << Employee::totalEmployees << endl;
+    outfile << "\nTOTAL EMPLOYEES: " << Employee::totalEmployees / 2 << endl;
 }
 
-void printVector(vector<Person*> all) {
+void printVector(vector<Person*> all, ofstream& outfile) {
 
-    cout << "TYPE  " << setw(15) << "LAST NAME"
+    outfile << "TYPE  " << setw(15) << "LAST NAME"
          << setw(16) << "FIRST NAME" << setw(8) << "AGE"
          << setw(48) << "OTHER INFO" << setw(60) << "PETS" << endl;
     for (int i = 0; i < all.size(); i++)
-        all.at(i)->print();
+        all.at(i)->print(outfile);
 
-    cout << "\nTOTAL: " << Person::totalPeople/2 << endl;
+    outfile << "\nTOTAL: " << Person::totalPeople/2 << endl;
 }

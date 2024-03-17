@@ -12,7 +12,8 @@
 #include "Student.h"
 #include "Teacher.h"
 #include "Employee.h"
-
+#include <iostream>
+#include <fstream>
 
 //add Static Member initialization
 int Person::totalPeople = 0;
@@ -23,6 +24,7 @@ int Employee::totalEmployees = 0;
 int main()
 {
     //create a vector of Person type
+    ofstream outfile("output.txt");
     vector<Person> myPeeps;
     vector<Student> myStudents;
     vector<Teacher> myTeachers;
@@ -30,7 +32,7 @@ int main()
     vector<Person*> allPeople;
 
     // read the file & load into vector of Personal type
-    readFile(myPeeps, myStudents, myTeachers, myEmployees, allPeople);
+    readFile(myPeeps, myStudents, myTeachers, myEmployees, allPeople, outfile);
 
     /*
     Person newP;
@@ -43,11 +45,11 @@ int main()
      */
 
     // print the vector
-    printVector(myPeeps);
-    printVector(myStudents);
-    printVector(myTeachers);
-    printVector(myEmployees);
-    printVector(allPeople);
+    printVector(myPeeps, outfile);
+    printVector(myStudents, outfile);
+    printVector(myTeachers, outfile);
+    printVector(myEmployees, outfile);
+    printVector(allPeople, outfile);
 
     //print total people (static variable from class)
 }

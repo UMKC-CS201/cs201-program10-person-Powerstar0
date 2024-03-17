@@ -45,3 +45,16 @@ void Person::print () {
     }
     cout << endl;
 }
+
+void Person::print (ofstream& outfile) {
+    //cout << "Name: " << fname << " " << lname << endl;
+    //cout << "Age:  " << age << endl << endl;
+    outfile << type << left << setw(5) << " "
+         << setw(16) << lname
+         << setw(15) << fname
+         << setw(56) << age;
+    for (const auto& pet : pets) {
+        outfile << setw(11) << pet->getName() << " (" << pet->getType() << ") ";
+    }
+    outfile << endl;
+}

@@ -38,6 +38,17 @@ public:
         }
         cout << endl;
     }
+    void print(ofstream& outfile) {
+        outfile << type << left << setw(5) << " "
+             << setw(16) << lname
+             << setw(15) << fname
+             << setw(9)  << age
+             << setw(5)  << " HRLY:" << setw(5) <<hrlyRate << " VAC DAYS:" << setw(26) << vacHours;
+        for (const auto& pet : pets) {
+            outfile << setw(11) << pet->getName() << " (" << pet->getType() << ") ";
+        }
+        outfile << endl;
+    }
     static int totalEmployees;
 };
 

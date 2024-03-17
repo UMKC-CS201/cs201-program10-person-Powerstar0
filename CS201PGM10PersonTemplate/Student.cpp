@@ -31,3 +31,16 @@ void Student::print() {
     }
     cout << endl;
 }
+
+void Student::print(ofstream &outfile) {
+    outfile << type << left << setw(5) << " "
+         << setw(16) << lname
+         << setw(15) << fname
+         << setw(10) << age
+         << setw(4) << "GPA:" << setw(42) << gpa;
+    for (const auto& pet : pets) {
+        outfile << setw(11) << pet->getName() <<" (" << pet->getType() << ") ";
+    }
+    outfile << endl;
+}
+
