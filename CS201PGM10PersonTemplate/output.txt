@@ -1,0 +1,52 @@
+RECORD: P,Jones,Bob,BB,none IS IN ERROR
+TYPE   LAST NAME       FIRST NAME     AGE        OTHER INFO                                  PETS
+P     Bunny           Bugs           54                                                      none        () 
+P     Sam             Yosemite       68                                                      none        () 
+P     Harris          Kamala         59                                                      Al          (dog) Bob         (dog) Carl        (dog) 
+P     Stefani         Gwen           54                                                      none        () 
+
+TOTAL PEOPLE: 4
+TYPE  LAST NAME      FIRST NAME      AGE     OTHER INFO                                      PETS                                                        
+S     Einstein        Albert         143       GPA:4.9                                       none        () 
+S     Parsons         Jim            42        GPA:4.2                                       Soft Kitty  (cat) 
+S     Mouse           Mickey         91        GPA:3.5                                       Pete        (cat) 
+S     Duck            Daffy          84        GPA:2.5                                       none        () 
+S     Kenobi          Obiwan         156       GPA:4.9                                       Slither     (snake) 
+S     Squarepants     Spongebob      5         GPA:2.3                                       Gary        (snail) 
+
+TOTAL STUDENTS: 6
+TYPE  LAST NAME      FIRST NAME      AGE     OTHER INFO                                      PETS                                                        
+T     Rabbit          Roger          84        HRLY:10.5   SUBJECT:Physical Education        Gopher      (pig) Sam         (dog) 
+T     Sullivan        James          29        HRLY:15.15  SUBJECT:Management                none        () 
+T     Lightyear       Buzz           45        HRLY:20.15  SUBJECT:Astronomy                 Chatty      (bird) 
+T     Wazowski        Mike           36        HRLY:17.5   SUBJECT:Computer Science          Ralph       (cat) Carlyse     (dog) 
+
+TOTAL TEACHERS: 4
+TYPE  LAST NAME      FIRST NAME      AGE     OTHER INFO                                      PETS                                                        
+E     Mouse           Minne          24        HRLY:15.5  VAC DAYS:14                        none        () 
+E     Pig             Porky          32        HRLY:12    VAC DAYS:7                         none        () 
+E     Dinkley         Velma          25        HRLY:14.5  VAC DAYS:20                        Sparky      (dog) 
+E     Griffin         Stewie         1         HRLY:14.5  VAC DAYS:27                        none        () 
+
+TOTAL EMPLOYEES: 4
+TYPE  LAST NAME      FIRST NAME      AGE     OTHER INFO                                      PETS                                                        
+P     Bunny           Bugs           54                                                      none        () 
+P     Sam             Yosemite       68                                                      none        () 
+P     Harris          Kamala         59                                                      Al          (dog) Bob         (dog) Carl        (dog) 
+P     Stefani         Gwen           54                                                      none        () 
+S     Einstein        Albert         143       GPA:4.9                                       none        () 
+S     Parsons         Jim            42        GPA:4.2                                       Soft Kitty  (cat) 
+S     Mouse           Mickey         91        GPA:3.5                                       Pete        (cat) 
+S     Duck            Daffy          84        GPA:2.5                                       none        () 
+S     Kenobi          Obiwan         156       GPA:4.9                                       Slither     (snake) 
+S     Squarepants     Spongebob      5         GPA:2.3                                       Gary        (snail) 
+T     Rabbit          Roger          84        HRLY:10.5   SUBJECT:Physical Education        Gopher      (pig) Sam         (dog) 
+T     Sullivan        James          29        HRLY:15.15  SUBJECT:Management                none        () 
+T     Lightyear       Buzz           45        HRLY:20.15  SUBJECT:Astronomy                 Chatty      (bird) 
+T     Wazowski        Mike           36        HRLY:17.5   SUBJECT:Computer Science          Ralph       (cat) Carlyse     (dog) 
+E     Mouse           Minne          24        HRLY:15.5  VAC DAYS:14                        none        () 
+E     Pig             Porky          32        HRLY:12    VAC DAYS:7                         none        () 
+E     Dinkley         Velma          25        HRLY:14.5  VAC DAYS:20                        Sparky      (dog) 
+E     Griffin         Stewie         1         HRLY:14.5  VAC DAYS:27                        none        () 
+
+TOTAL: 18
